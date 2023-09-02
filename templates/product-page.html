@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="text-gray-400 body-font bg-gray-900">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-row w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">Browse through our {{cat}}</h1>
+        <div class="h-1 w-20 bg-pink-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-400 text-opacity-90">For anime fans, we brought some of your favourite animes to your outfits! Shop Now!</p>
+    </div>
+
+    <div class="flex flex-row">
+    {% for p in payload %}
+      <div class="xl:w-1/4 md:w-1/2 p-4">
+        <a href="/product-info/{{cat}}/{{p[0]}}">
+        <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
+          <img class="h-40 rounded w-full object-cover object-center mb-6" src="{{url_for('static', filename=p[2])}}" alt="content">
+          <h3 class="tracking-widest text-pink-400 text-xs font-medium title-font">SUBTITLE</h3>
+          <h2 class="text-lg text-white font-medium title-font mb-4">{{p[0]}}</h2>
+          <p class="leading-relaxed text-base">{{p[1]}}</p>
+        </div>
+      </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</section>
+
+{% endblock %}
